@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.box {
+				width: 350px;
+				height: 350px;
+				background: url(images/001.jpg) no-repeat;
+				border: 1px solid gray;
+				margin: 100px;
+				position: relative;
+			}
+			
+			.box .small {
+				position: relative;
+			}
+			
+			.box .mask {
+				width: 100px;
+				height: 100px;
+				background-color: rgba(255, 255, 0, 0.4);
+				cursor: move;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.box .big {
+				width: 450px;
+				height: 450px;
+				border: 1px solid gray;
+				margin-left: 360px;
+				overflow: hidden;
+				text-align: center;
+				position: relative;
+				display: none;
+			}
+			
+			.box .big img {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box" id="box">
+			<!--小盒子-->
+			<div class="small">
+				<div class="mask">
+
+				</div>
+			</div>
+			<div class="big">
+				<img src="images/0001.jpg" />
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var box = document.getElementById("box");
+			var ma = document.getElementsByClassName("mask")[0];
+			var big = document.getElementsByClassName("big")[0];
+			var stanumx = 0,
+				stanumy = 0;
+			var img = document.getElementsByTagName("img")[0];
+			box.onmouseover = function() {
+				ma.style.display = "block";
+				big.style.display = "block";
+				box.onmousemove = function(event) {
+					stanumx = event.clientX - box.offsetLeft - ma.offsetWidth / 2;
+					stanumy = event.clientY - box.offsetTop - ma.offsetHeight / 2;
+					if(stanumx < 0) {
+						stanumx = 0;
+					} else if(stanumx > 250) {
+						stanumx = 250;
+					}
+					if(stanumy < 0) {
+						stanumy = 0;
+					} else if(stanumy > 250) {
+						stanumy = 250;
+					}
+					ma.style.left = stanumx + "px";
+					ma.style.top = stanumy + "px";
+					var beishu = big.offsetWidth / box.offsetWidth
+					img.style.left = -stanumx * beishu + "px"
+					img.style.top = -stanumy * beishu + "px"
+				}
+			}
+			box.onmouseout = function() {
+				ma.style.display = "none";
+				big.style.display = "none";
+
+			}
+
+		}
+	</script>
+
+</html>

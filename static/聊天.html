@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>发送消息</title>
+		<style type="text/css">
+			#screen {
+				width: 240px;
+				height: 200px;
+				border: 2px solid red;
+				padding: 10px;
+				overflow: auto;
+			}
+			
+			#strong1 {
+				cursor: pointer;
+				
+			}
+			#text1{
+				margin-top: 20px;
+			}
+			#btn1{
+				width: 60px;
+				height: 30px;
+				background-color: orange;
+				color: whitesmoke;
+				border: 1px solid white;
+				border-radius:20% ;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var div = document.getElementById('screen');
+				var oStrong = document.getElementById('strong1');
+				var oText = document.getElementById('text1');
+				var oBtn = document.getElementById('btn1');
+				oBtn.onclick = function() {
+					div.innerHTML += oStrong.innerHTML + '：' + oText.value + '<br>';
+					oText.value ='';
+				} 
+				oStrong.onclick = function() {
+					if(oStrong.innerHTML == '张三:') {
+						oStrong.innerHTML = '王四:';
+					} else {
+						oStrong.innerHTML = '张三:';
+					} /*名字变换*/
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="screen"> </div>
+		<strong id="strong1">张三:</strong>
+		<textarea id="text1" rows="1px" cols="16px" placeholder="请输入内容"></textarea>
+		<input id="btn1" type="button" value="发送">
+	</body>
+
+</html>

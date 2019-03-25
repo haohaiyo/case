@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: black;
+			}
+			.box{
+				width: 800px;
+				height: 42px;
+				background: url(images/rss.png) no-repeat right center #FFFFFF;
+				margin: 100px auto;
+				position: relative;
+			}
+			.box span{
+				background: url(images/cloud.gif) no-repeat;
+				width: 83px;
+				height: 42px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.box ul{
+				list-style: none;
+				/*小技巧*/
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.box ul li{
+				float: left;
+				width: 83px;
+				height: 42px;
+				text-align: center;
+				line-height: 42px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<span id="cloud"></span>
+			<ul>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+				<li>新闻首页</li>
+			</ul>
+		</div>
+		<script>
+			window.onload=function(){
+				var list=document.getElementsByTagName("li");
+				var num=0,stanum=0;
+				var current=0;
+				var clo=document.getElementById("cloud");
+				for (var i=0;i<list.length;i++) {
+					list[i].onmouseover=function(){
+//						console.log(this.offsetLeft);
+						num=this.offsetLeft;
+						clo.style.left=num+"px";
+					}
+					list[i].onmouseout=function(){
+						num=current;
+					}
+					list[i].onclick=function(){
+						current=this.offsetLeft;
+					}
+				}
+				setInterval(function(){
+//					缓动学公式
+					stanum=stanum+(num-stanum)/10;
+					clo.style.left=stanum+"px";
+				},10);
+				
+			}
+		</script>
+	</body>
+</html>

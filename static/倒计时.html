@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			window.onload=function(){
+				setInterval(getdao,1000);
+				function getdao(){
+				var div=document.getElementsByTagName("div")[0];
+				var date=new Date();
+				var date1=new Date("2019/3/29 10:00:00")
+				//时间戳 毫秒数
+				var time=date1.getTime()-date.getTime();
+				var seconds=time/1000;
+				var day=parseInt( seconds/3600/24) ;
+				var hour=parseInt(seconds/3600%24) ;
+				var second=seconds-day*24*3600-hour*3600
+				var min=parseInt(second/60);
+				var s=parseInt(second%60);
+				div.innerHTML="倒计时为："+day+"天"+hour+"小时"+min+"分钟"+s+"秒";
+				}
+			}
+			
+		</script>
+	</body>
+</html>

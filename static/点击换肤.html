@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+					background:url(../../Original/staic/img/2.jpg) no-repeat;
+			background-size:cover;
+			}
+			.zong{
+				width: 100%;
+				height: 600px;
+			}
+			.zz{
+				width: 1000px;
+				height: 100px;
+				margin: 10px auto;
+				border: 1px solid black;
+			}
+			.zz img{
+				width: 200px;
+				height: 100px;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var img=document.getElementsByTagName("img");
+				var zz=document.getElementsByClassName("zong")[0];
+				for (var i=0;i<img.length;i++){
+					(function(i){
+						img[i].onmousemove= function(e){
+							imgurl=e.target.getAttribute("src");
+					 		document.body.style.backgroundImage="url("+imgurl+")"
+						}
+					})(i)
+				}
+			}
+		</script>
+		<div class="zong">
+			<div class="zz">
+				<img src="../../Original/staic/img/cover-27a70ceb-7f26-4e2a-8c05-bb48b639ac80.jpeg"/>
+				<img src="../../Original/staic/img/cover-304db1b4-1c3a-48b6-83e8-7fb3aa5e564a.jpeg"/>
+				<img src="../../Original/staic/img/cover-52314696-23e1-45ff-9e89-0d1466ece361.jpeg"/>
+				<img src="../../Original/staic/img/cover-ef4e5f74-6907-48b0-9af8-cbed91e0c652.jpeg"/>
+				<img src="../../Original/staic/img/cover-52314696-23e1-45ff-9e89-0d1466ece361.jpeg"/>
+			</div>
+		</div>
+	</body>
+</html>

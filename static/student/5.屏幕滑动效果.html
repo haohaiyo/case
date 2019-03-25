@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			/*让html和body标签的宽和高都和屏幕一样*/
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			ul,
+			ol {
+				list-style: none;
+			}
+			
+			#ul {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#ul li {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#ol {
+				position: fixed;
+				top: 20px;
+				left: 50px;
+			}
+			
+			#ol li {
+				width: 50px;
+				height: 50px;
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="ul">
+			<li>楼层11</li>
+			<li>楼层22</li>
+			<li>楼层33</li>
+			<li>楼层44</li>
+			<li>楼层55</li>
+		</ul>
+		<ol id="ol">
+			<li>楼层1</li>
+			<li>楼层2</li>
+			<li>楼层3</li>
+			<li>楼层4</li>
+			<li>楼层5</li>
+		</ol>
+
+	</body>
+
+</html>
+<script type="text/javascript">
+	window.onload = function() {
+		var oli = document.getElementsByTagName("ol")[0];
+		var list = oli.children;
+		var uli = document.getElementsByTagName("ul")[0];
+		var ulist = uli.children;
+		var num = 0;
+		var startnum = 0;
+		var timer = null;
+		var color = ["red", "orange", "pink", "purple", "white"]
+		for(var i = 0; i < list.length; i++) {
+			list[i].style.backgroundColor = color[i];
+			ulist[i].style.backgroundColor = color[i];
+			list[i].index = i;
+			list[i].onclick= function() {
+				startnum = ulist[this.index].offsetTop;
+			}
+			clearInterval(timer);
+			timer = setInterval(function() {
+					num =num+ (startnum-num) / 10;
+					window.scrollTo(0,num);
+				}, 80);
+		}
+	}
+</script>

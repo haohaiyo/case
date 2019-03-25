@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.pic {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img class="pic" src="img.jpg" />
+	</body>
+	<script>
+		window.onload = function() {
+			var img = document.getElementsByClassName("pic")[0];
+			var stax = 0,
+				stay = 0,
+				tarx = 0,
+				tary = 0;
+			document.onclick = function(event) {
+				var event = window.event || event;
+				tarx = event.clientX - 50;
+				tary = event.clientY - 50;
+				//				img.style.left=event.clientX-50+"px";
+				//				img.style.top=event.clientY-50+"px";
+			}
+			setInterval(function() {
+				stax = stax + (tarx - stax) / 10;
+				stay = stay + (tary - stay) / 10;
+				img.style.left = stax + "px";
+				img.style.top = stay + "px";
+			}, 20)
+		}
+	</script>
+
+</html>

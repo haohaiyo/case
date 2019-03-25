@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.partent {
+	margin: 100px auto;
+	width: 360px;
+	height: 430px;
+	border: 1px solid #888C8E;
+	
+}
+.son {
+		width: 360px;
+		height: 360px;
+		background-image: url(../img/01big.jpg);
+	}
+.son1 img{
+	float: left;
+	border: 1px solid #888C8E;
+	opacity:1;
+}
